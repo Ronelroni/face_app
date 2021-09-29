@@ -22,6 +22,7 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
+    @post.user_id=current_user.id
     if params[:back]
       render :new
     else
@@ -31,6 +32,7 @@ class PostsController < ApplicationController
         render :new
       end
     end
+  
   end
 
   # PATCH/PUT /posts/1 or /posts/1.json
